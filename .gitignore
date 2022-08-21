@@ -33,3 +33,6 @@
 /.vs
 /Debug
 /x64/Debug
+/resources
+/x64/ReleaseWithoutConsole
+/server.log
