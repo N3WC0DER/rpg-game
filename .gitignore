@@ -30,9 +30,12 @@
 *.exe
 *.out
 *.app
+
+# Other
 /.vs
 /Debug
 /x64/Debug
 /resources
 /x64/ReleaseWithoutConsole
-/server.log
+/game.log
+/RPGame.sln

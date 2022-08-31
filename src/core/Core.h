@@ -11,6 +11,9 @@
 #include "Object.h"
 #include "GameInfo.h"
 
+#include "../event/EventHandler.h"
+#include "../event/EventListener.h"
+
 #include <SFML/Graphics.hpp>
 
 class Core {

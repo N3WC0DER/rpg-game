@@ -5,14 +5,11 @@
 #include "SFML/Graphics.hpp"
 
 class Object : public sf::Drawable {
-private:
+protected:
 	sf::Texture* texture = nullptr;
 	sf::Sprite* sprite = nullptr;
-	float speed = 0.5f;
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-
-	void callibrateOrigin();
 
 public:
 	Object();
@@ -22,7 +19,7 @@ public:
 	Object& operator=(const Object& other);
 	~Object();
 	
-	void update(float elapsedTime);
+	virtual void update(float elapsedTime);
 
 protected:
 	void setPosition(const sf::Vector2f& position);
@@ -34,4 +31,5 @@ protected:
 	void setSprite(const sf::Sprite& sprite);
 	sf::Sprite getSprite() const;
 
+	void callibrateOrigin();
 };

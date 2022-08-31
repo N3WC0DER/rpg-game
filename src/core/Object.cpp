@@ -5,11 +5,6 @@ void Object::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	target.draw(*sprite, states);
 }
 
-void Object::callibrateOrigin() {
-	if (this->sprite)
-		this->sprite->setOrigin((float) this->sprite->getTextureRect().width / 2, (float) this->sprite->getTextureRect().height / 2);
-}
-
 Object::Object() {}
 
 Object::Object(const sf::Texture& texture, sf::IntRect rect)
@@ -98,3 +93,7 @@ sf::Texture Object::getTexture() const {
 		throw Exception() << "Object Object does not have a texture";
 }
 
+void Object::callibrateOrigin() {
+	if (this->sprite)
+		this->sprite->setOrigin((float) this->sprite->getTextureRect().width / 2, (float) this->sprite->getTextureRect().height / 2);
+}

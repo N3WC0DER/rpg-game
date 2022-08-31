@@ -12,12 +12,6 @@ Entity::Entity(const sf::Sprite& sprite)
 Entity::Entity(const Entity& other)
 	: Object(other) {}
 
-//Entity& Entity::operator=(const Entity& other) {
-//	return *this = other;
-//}
-
 Entity::~Entity() {}
 
-void Entity::move(sf::Vector2f position) {
-
-}
+void Entity::update(float elapsedTime) {}

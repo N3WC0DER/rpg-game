@@ -15,31 +15,34 @@ void Core::init() {
 		this->window.reset(new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "RPGame", sf::Style::Fullscreen));
 
 	this->window->setFramerateLimit(60);
+	this->window->setKeyRepeatEnabled(false);
 
 	sf::Texture texture;
 	if (!texture.loadFromFile("resources/_Crouch.png")) {
 		throw Exception() << "Texture not found";
 	}
 
-	Entity entity(texture);
+	Player player(texture);
 
-	this->addObject(entity);
+	this->addObject(player);
+	EventHandler<WindowCloseEvent>::getInstance()->addCallable([] (const WindowCloseEvent& event) {
+		if (event.window)
+			event.window->close();
+		else
+			throw Exception() << "Window not closed";
+	});
 
 	this->update();
 }
 
 void Core::update() {
 	sf::Clock clock;
+	EventListener listener;
 	while (this->window->isOpen()) {
-		float time = clock.getElapsedTime().asMicroseconds();
+		float time = clock.getElapsedTime().asSeconds();
 		clock.restart();
-		time = time / 1400;
 
-		sf::Event event;
-		while (this->window->pollEvent(event)) {
-			if (event.type == sf::Event::Closed)
-				this->window->close();
-		}
+		listener.pollEvent(this->window.get());
 
 		this->window->clear();
 

@@ -23,7 +23,7 @@ private:
 	
 	inline tm* getCurrentTime();
 	
-	const std::string fileName = "server.log";
+	const std::string fileName = "game.log";
 	
 	std::mutex mutex;
 	
